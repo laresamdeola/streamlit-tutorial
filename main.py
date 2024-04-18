@@ -52,7 +52,15 @@ map_data = pd.DataFrame(
 
 # Widgets
 
-st.write('Widgets')
+# st.write('Widgets')
 
-x = st.slider('x')
-st.write(x, 'squared is', math.pow(x, 2))
+# x = st.slider('x')
+# st.write(x, 'squared is', math.pow(x, 2))
+
+# Text Input
+
+# st.write('Text Input')
+# st.text_input('Your Age', key='age')
+# st.session_state.age
+
+# Checkboxes
