@@ -122,3 +122,76 @@ import time
 #     time.sleep(0.1)
 
 # '... and now we\'re done!'
+
+# Caching
+
+# @st.cache_data
+# # good for serializable objects like strings, int, list, dataframes etc
+
+# @st.cache_resource
+#good for non-serializable objects or data that can't be stored in a database e.g 
+# ml models, database connections etc.
+
+# Session State
+
+# Example
+
+import re
+
+# st.text_input('Enter your name', key='name', value='Jack Smith')
+
+# if st.session_state.name.isalpha():
+#     st.write(st.session_state.name)
+# if re.findall( '[0-9]', st.session_state.name):
+#     st.write('Name can not contain numbers')
+
+
+# Connections
+
+# Theming
+
+# Pages
+
+# st.write('This is the Main Page')
+# # st.markdown('Main Page')
+# st.sidebar.markdown('# Main Page')
+
+
+#I'm here
+
+# Static File Serving
+
+# App Testing
+
+# Fetching datasets online
+
+DATE_COLUMN = 'date/time'
+DATA_URL = ('https://www.kaggle.com/datasets/aspillai/netflix-stock-price-with-indicators?select=nflx_2014_2023.csv')
+
+@st.cache_data
+def load_data(n_rows):
+    data = pd.read_csv('uber-raw-data-sep14.csv', nrows=n_rows)
+    data.rename(columns={'Lat': 'lat', 'Lon': 'lon'}, inplace=True)
+    return data
+    # lowercase = lambda x: str(x).lower()
+    # data.rename(lowercase, axis='columns', inplace=True)
+    # data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+
+dataset = load_data(10)
+
+# st.dataframe(dataset)
+
+# st.subheader('Raw data')
+# st.write(dataset)
+
+# st.subheader('Map of all pickups')
+# st.map(dataset)
+
+# hour_to_filter = 40.74
+# print(dataset[dataset['lat'] < hour_to_filter])
+
+st.subheader('Raw Data')
+
+if st.checkbox('Show raw data'):
+    st.subheader('Raw Data')
+    st.write(dataset)
